@@ -16,10 +16,19 @@ public class Main {
         AuthorService authorService = (AuthorService) injector.getInstance(AuthorService.class);
         authorService.add(author);
 
+        Author author2 = new Author();
+        author2.setName("Ivan");
+        author2.setAge(54);
+        authorService.add(author2);
+
         Genre genre = new Genre();
         genre.setGenre("Fantasy");
         GenreService genreService = (GenreService) injector.getInstance(GenreService.class);
         genreService.add(genre);
+
+        Genre genre2 = new Genre();
+        genre2.setGenre("Science");
+        genreService.add(genre2);
 
         Book book = new Book();
         book.setTitle("Dragons");
@@ -28,6 +37,20 @@ public class Main {
         book.setGenre(genre);
         BookService bookService = (BookService) injector.getInstance(BookService.class);
         bookService.add(book);
+
+        Book book2 = new Book();
+        book2.setTitle("Sci");
+        book2.setDescription("It's about physic");
+        book2.setAuthor(author2);
+        book2.setGenre(genre2);
+        bookService.add(book2);
+
+        Book book3 = new Book();
+        book3.setTitle("Somethin");
+        book3.setDescription("It's about something");
+        book3.setAuthor(author);
+        book3.setGenre(genre2);
+        bookService.add(book3);
 
         bookService.getAll().stream().forEach(System.out::println);
     }
